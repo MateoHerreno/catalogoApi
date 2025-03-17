@@ -7,12 +7,15 @@ exports.createService = async (req, res) => {
             referencia: req.body.referencia,
             nombre: req.body.nombre,
             precio: req.body.precio,
-            imagen: req.body.imagen,
+            imagen1: req.body.imagen1,
+            imagen2: req.body.imagen2,
+            imagen3: req.body.imagen3,
+            categoria: req.body.categoria,
             estado: req.body.estado || 'activo',
         };
 
         let insert = await Servicio.create(newService);
-        res.status(200).json({ mensaje: 'Created successfully', data: insert });
+        res.status(200).json({ mensaje: 'Created successfully'});
     } catch (error) {
         res.status(500).json({ error: 'Something went wrong', details: error.message });
     }
@@ -44,21 +47,24 @@ exports.getServiceByReference = async (req, res) => {
 
 // Actualizar un servicio
 exports.updateService = async (req, res) => {
-    try{
+    try {
         const updateService = {
             referencia: req.body.referencia,
             nombre: req.body.nombre,
             precio: req.body.precio,
-            imagen: req.body.imagen,
+            imagen1: req.body.imagen1,
+            imagen2: req.body.imagen2,
+            imagen3: req.body.imagen3,
+            categoria: req.body.categoria,
             estado: req.body.estado || 'activo',
         };
-        let update = await Servicio.findOneAndUpdate({_id:req.params.id},updateService)
-        if(update){
-            res.status(200).json({mensaje:'updated successfully'}) 
-        }else{
-            res.status(404).json({error: 'service not found' }) 
+        let update = await Servicio.findOneAndUpdate({ _id: req.params.id }, updateService)
+        if (update) {
+            res.status(200).json({ mensaje: 'updated successfully' })
+        } else {
+            res.status(404).json({ error: 'service not found' })
         }
-    }catch (error) {
+    } catch (error) {
         res.status(500).json({ error: 'Something went wrong', details: error.message });
     }
 };
@@ -76,3 +82,18 @@ exports.deleteService = async (req, res) => {
         res.status(500).json({ error: 'Something went wrong', details: error.message });
     }
 };
+//contador de vistas en producto
+exports.incrementarVista = async (req, res) => {
+    try {
+        const producto = await Servicio.findByIdAndUpdate({ _id: req.params.id},
+            { $inc: { vistas: 1 } },
+        );
+        if (!producto) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        res.json({ message: 'Vista incrementada', vistas: producto.vistas });
+    } catch (error) {
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
+}
