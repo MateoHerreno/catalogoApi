@@ -6,6 +6,7 @@ exports.createService = async (req, res) => {
         const newService = {
             referencia: req.body.referencia,
             nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
             precio: req.body.precio,
             imagen1: req.body.imagen1,
             imagen2: req.body.imagen2,
@@ -32,7 +33,7 @@ exports.getServices = async (req, res) => {
 };
 
 // Obtener un servicio por id
-exports.getServiceByReference = async (req, res) => {
+exports.getServiceByid = async (req, res) => {
     try {
         const service = await Servicio.findOne({ _id: req.params.id });
         if (service) {
@@ -51,6 +52,7 @@ exports.updateService = async (req, res) => {
         const updateService = {
             referencia: req.body.referencia,
             nombre: req.body.nombre,
+            descripcion:req.body.descripcion,
             precio: req.body.precio,
             imagen1: req.body.imagen1,
             imagen2: req.body.imagen2,
