@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const services = require('../controller/serviciosController')
+const number = require('../controller/numeroController')
 
 module.exports = function () {
 
@@ -12,6 +13,12 @@ module.exports = function () {
     router.post("/countProducts/:id/", services.incrementarVista); //incrementar el contador de vistas id
     router.delete("/deleteProducts/:id", services.deleteService); //eliminar un producto
 
+    //numerotelefono
+    router.post("/createNumber",number.createNumber);
+    router.get("/number",number.getNumber);
+    router.put("/editNumber/:id",number.editNumber);
+    router.delete("/deleteNumber/:id",number.deleteNumber);
+   
     return router
 }
 

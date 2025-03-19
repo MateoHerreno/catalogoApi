@@ -56,7 +56,6 @@ const servicioSchema = new mongoose.Schema({
 
 }, { versionKey: false });
 
-
 const servicios = conexion.model('servicios', servicioSchema);
 
 module.exports = servicios;
