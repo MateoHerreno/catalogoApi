@@ -1,7 +1,7 @@
-const Servicio = require("../models/serviciosModels")
+const producto = require("../models/productosModels")
 
-//crear servicio
-exports.createService = async (req, res) => {
+//crear producto
+exports.createProduct = async (req, res) => {
     try {
         const newService = {
             referencia: req.body.referencia,
@@ -15,27 +15,27 @@ exports.createService = async (req, res) => {
             estado: req.body.estado || 'activo',
         };
 
-        let insert = await Servicio.create(newService);
+        let insert = await producto.create(newService);
         res.status(200).json({ mensaje: 'Created successfully'});
     } catch (error) {
         res.status(500).json({ error: 'Something went wrong', details: error.message });
     }
 };
 
-// Obtener todos los servicios
-exports.getServices = async (req, res) => {
+// Obtener todos los productos
+exports.getProducts = async (req, res) => {
     try {
-        let services = await Servicio.find();
+        let services = await producto.find();
         res.status(200).json(services);
     } catch (error) {
         res.status(500).json({ error: 'Something went wrong', details: error.message });
     }
 };
 
-// Obtener un servicio por id
-exports.getServiceByid = async (req, res) => {
+// Obtener un producto por id
+exports.getProductByid = async (req, res) => {
     try {
-        const service = await Servicio.findOne({ _id: req.params.id });
+        const service = await producto.findOne({ _id: req.params.id });
         if (service) {
             res.status(200).json({ 'data': service });
         } else {
@@ -46,8 +46,8 @@ exports.getServiceByid = async (req, res) => {
     }
 };
 
-// Actualizar un servicio
-exports.updateService = async (req, res) => {
+// Actualizar un producto
+exports.updateProduc = async (req, res) => {
     try {
         const updateService = {
             referencia: req.body.referencia,
@@ -60,7 +60,7 @@ exports.updateService = async (req, res) => {
             categoria: req.body.categoria,
             estado: req.body.estado || 'activo',
         };
-        let update = await Servicio.findOneAndUpdate({ _id: req.params.id }, updateService)
+        let update = await producto.findOneAndUpdate({ _id: req.params.id }, updateService)
         if (update) {
             res.status(200).json({ mensaje: 'updated successfully' })
         } else {
@@ -71,10 +71,10 @@ exports.updateService = async (req, res) => {
     }
 };
 
-// Eliminar un servicio
-exports.deleteService = async (req, res) => {
+// Eliminar un producto
+exports.deleteProduct = async (req, res) => {
     try {
-        const remove = await Servicio.findOneAndDelete({ _id: req.params.id });
+        const remove = await producto.findOneAndDelete({ _id: req.params.id });
         if (remove) {
             res.status(200).json({ mensaje: 'delete successfully' })
         } else {
@@ -85,12 +85,12 @@ exports.deleteService = async (req, res) => {
     }
 };
 //contador de vistas en producto
-exports.incrementarVista = async (req, res) => {
+exports.increaseview = async (req, res) => {
     try {
-        const producto = await Servicio.findByIdAndUpdate({ _id: req.params.id},
+        const productoview = await producto.findByIdAndUpdate({ _id: req.params.id},
             { $inc: { vistas: 1 } },
         );
-        if (!producto) {
+        if (!productoview ) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }
 

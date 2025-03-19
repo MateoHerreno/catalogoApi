@@ -2,7 +2,7 @@ const conexion = require('../config/connection');
 const mongoose = require('mongoose');
 const moment = require('moment-timezone');
 
-const servicioSchema = new mongoose.Schema({
+const productoSchema = new mongoose.Schema({
     referencia: {
         type: String,
         required: true,
@@ -56,6 +56,6 @@ const servicioSchema = new mongoose.Schema({
 
 }, { versionKey: false });
 
-const servicios = conexion.model('servicios', servicioSchema);
+const productos = conexion.model('productos', productoSchema);
 
-module.exports = servicios;
+module.exports = productos;

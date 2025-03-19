@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const services = require('../controller/serviciosController')
+const products = require('../controller/productosController')
 const number = require('../controller/numeroController')
 
 module.exports = function () {
 
-    // Servicios
-    router.post("/createProducts", services.createService); //crear producto
-    router.get("/allProducts", services.getServices); // traer todos los productos
-    router.get("/products/:id", services.getServiceByid); //traer un producto con id
-    router.put("/editProducts/:id", services.updateService); // editar un producto
-    router.post("/countProducts/:id/", services.incrementarVista); //incrementar el contador de vistas id
-    router.delete("/deleteProducts/:id", services.deleteService); //eliminar un producto
+    // productos
+    router.post("/createProducts", products.createProduct); //crear producto
+    router.get("/allProducts", products.getProducts); // traer todos los productos
+    router.get("/products/:id", products.getProductByid); //traer un producto con id
+    router.put("/editProducts/:id", products.updateProduc); // editar un producto
+    router.delete("/deleteProducts/:id", products.deleteProduct); //eliminar un producto
+    router.post("/increaseview/:id", products.increaseview); //incrementar el contador de vistas id
 
     //numerotelefono
     router.post("/createNumber",number.createNumber);
