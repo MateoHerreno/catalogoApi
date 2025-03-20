@@ -5,6 +5,10 @@ exports.createNumber =async(req, res) =>{
     try{
         const newNumber = {
             numero: req.body.numero,
+            email: req.body.email,
+            faceurl: req.body.faceurl,
+            instaurl: req.body.instaurl,
+            nombreweb: req.body.nombreweb,
             estado: req.body.estado
         };
         let insert =await number.create(newNumber);
@@ -28,6 +32,10 @@ exports.editNumber = async (req, res) => {
     try {
         const updateNumber = {
             numero: req.body.numero,
+            email: req.body.email,
+            faceurl: req.body.faceurl,
+            instaurl: req.body.instaurl,
+            nombreweb: req.body.nombreweb,
             estado: req.body.estado
         };
         let update = await number.findOneAndUpdate({ _id: req.params.id }, updateNumber)

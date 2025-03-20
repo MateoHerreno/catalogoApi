@@ -9,6 +9,26 @@ const numberSchema = new mongoose.Schema({
         default: 0,
         min:0
     },
+    email:{
+        type : String,
+        required: true,
+        trim: true
+    },
+    faceurl:{
+        type : String,
+        required: true,
+        trim: true
+    },
+    instaurl:{
+        type : String,
+        required: true,
+        trim: true
+    },
+    nombreweb:{
+        type : String,
+        required: true,
+        trim: true
+    },
     estado: {
         type: String,
         enum: ['activo', 'inactivo'],
