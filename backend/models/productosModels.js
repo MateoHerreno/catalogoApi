@@ -44,6 +44,11 @@ const productoSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    descuento:{
+        type:Number,
+        default: 0,
+        min:0
+    },
     estado: {
         type: String,
         enum: ['activo', 'inactivo'],

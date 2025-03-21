@@ -13,6 +13,7 @@ exports.createProduct = async (req, res) => {
             imagen2: req.body.imagen2,
             imagen3: req.body.imagen3,
             categoria: req.body.categoria,
+            descuento: req.body.descuento,
             estado: req.body.estado || 'activo',
         };
 
@@ -60,7 +61,8 @@ exports.updateProduc = async (req, res) => {
             imagen2: req.body.imagen2,
             imagen3: req.body.imagen3,
             categoria: req.body.categoria,
-            estado: req.body.estado || 'activo',
+            descuento: req.body.descuento,
+            estado: req.body.estado
         };
         let update = await producto.findOneAndUpdate({ _id: req.params.id }, updateService)
         if (update) {
