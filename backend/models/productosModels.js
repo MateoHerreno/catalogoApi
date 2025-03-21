@@ -56,8 +56,13 @@ const productoSchema = new mongoose.Schema({
     },
     fechaCreacion: {
         type: Date,
-        default: () => moment().tz("America/Bogota").toDate()
+        default: () => moment().tz("America/Bogota").toDate(),
+        immutable: true 
     },
+    fechaEdicion: {
+        type: Date,
+        default: () => moment().tz("America/Bogota").toDate() 
+    }
 
 }, { versionKey: false });
 
