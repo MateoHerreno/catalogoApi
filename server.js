@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const router = require('./backend/routes/routes');
+const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 
@@ -13,6 +14,6 @@ app.set('views', path.join(__dirname,'/frontend/views/pages'));
 app.use(express.static('./frontend/views/static'))
 
 
-app.listen(process.env.PORT,()=>{
-    console.log('corriendo en', process.env.PORT)
-})
+app.listen(PORT, () => {
+    console.log('Servidor corriendo en', PORT);
+});

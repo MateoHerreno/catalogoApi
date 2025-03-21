@@ -17,6 +17,11 @@ const productoSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    talla:{
+        type: String,
+        require: true,
+        default : 'unica'
+    },
     precio: {
         type: Number,
         required: true,
