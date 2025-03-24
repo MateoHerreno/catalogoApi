@@ -29,15 +29,18 @@ const productoSchema = new mongoose.Schema({
     },
     imagen1: {
         type: String,
-        required: false
+        required: false,
+        default:"https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
     },
     imagen2: {
         type: String,
-        required: false
+        required: false,
+        default:"https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
     },
     imagen3: {
         type: String,
-        required: false
+        required: false,
+        default:"https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
     },
     categoria: {
         type: String,
